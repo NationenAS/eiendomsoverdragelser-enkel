@@ -1,0 +1,48 @@
+/* Cluster */
+.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
+	-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
+	-moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
+	-o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
+	transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+.leaflet-cluster-spider-leg {
+	/* stroke-dashoffset (duration and function) should match with leaflet-marker-icon transform in order to track it exactly */
+	-webkit-transition: -webkit-stroke-dashoffset 0.3s ease-out, -webkit-stroke-opacity 0.3s ease-in;
+	-moz-transition: -moz-stroke-dashoffset 0.3s ease-out, -moz-stroke-opacity 0.3s ease-in;
+	-o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
+	transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
+}
+.marker-cluster-small div {	background-color: hsl(50, 100%, 65%); }
+.marker-cluster-medium div { background-color: hsl(40, 100%, 50%); }
+.marker-cluster-large div { background-color: hsl(30, 100%, 45%); }
+
+.marker-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+	background-color: transparent;
+}
+.marker-cluster div {
+	width: 32px;
+	height: 32px;
+	margin-left: 4px;
+	margin-top: 4px;
+	text-align: center;
+	border-radius: 16px;
+	font: 12px adelle_sansregular, "Adelle Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+	opacity: 0.85;
+}
+.marker-cluster span {
+	line-height: 32px;
+	color: black;
+}
+
+/* Custom marker */
+.map-marker svg {
+    width: 23px;
+    height: 33.6px;
+    transform: translate(-6px, -27.6px);
+	fill: #305205;
+}
+.map-marker.free-sale svg {
+	fill: #006a95;
+}
