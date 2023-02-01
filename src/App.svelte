@@ -148,7 +148,7 @@ function setLock(state) {
 {#if title != null}
 <div class="header">
 	<h2>{title}</h2>
-	<p>Se alle <a href="https://www.nationen.no/landbruk/eiendomsoverdragelser/">kjøp og salg av landbrukseiendom</a> siste 60 dager.</p>
+	<p>Se <a href="https://www.nationen.no/landbruk/eiendomsoverdragelser/">alle kjøp og salg</a> av landbrukseiendom siste 60 dager.</p>
 </div>
 {/if}
 
@@ -177,6 +177,10 @@ main {
 	font-family: adelle_sansregular, "Adelle Sans";
 	font-size: 16px;
 	clear: both;
+}
+h2 {
+    font-family: tiempos_regular, "Tiempos Headline";
+    font-size: 22px;
 }
 .map-container {
 	position: relative;
