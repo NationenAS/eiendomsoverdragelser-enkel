@@ -1,10 +1,11 @@
+import './app.css'
 import App from './App.svelte'
 
 const urlParams = new URLSearchParams(window.location.search)
-let targetElement = document.querySelector('#Eiendomsoverdragelser')
-let initialSale = targetElement.dataset.sale || urlParams.get('id') || null
-let data = targetElement.dataset.custom ? JSON.parse(targetElement.dataset.custom) : null
-let title = targetElement.dataset.title ? targetElement.dataset.title : null
+let targetElement = document.querySelector('#Eiendomsoverdragelser-enkel')
+let initialSale = urlParams.get('id') || null
+let data = urlParams.get('data') ? JSON.parse(urlParams.get('data')) : null
+let title = urlParams.get('title') ? urlParams.get('title') : null
 
 const app = new App({
 	target: targetElement,

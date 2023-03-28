@@ -143,12 +143,17 @@ function setLock(state) {
 
 </script>
 <svelte:window on:resize={resizeMap} />
+<svelte:head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</svelte:head>
 
 <main>
 {#if title != null}
 <div>
 	<h2>{title}</h2>
-	<p>Se også <a href="https://www.nationen.no/landbruk/eiendomsoverdragelser/">alle kjøp og salg</a> av landbrukseiendom siste 60 dager.</p>
+	<p>Se også <a href="https://www.nationen.no/kjop-og-salg-av-landbrukseiendom/s/5-148-8974">alle kjøp og salg</a> av landbrukseiendom siste 60 dager.</p>
 </div>
 {/if}
 
@@ -174,21 +179,21 @@ function setLock(state) {
 
 <style>
 main {
-	font-family: adelle_sansregular, "Adelle Sans";
-	font-size: 16px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 15px;
 	clear: both;
 	line-height: 1.35;
 }
 h2 {
-    font-family: tiempos_regular, "Tiempos Headline";
+    font-family: "Tiempos Headline";
+	font-weight: 700;
     font-size: 22px;
 }
 .map-container {
 	position: relative;
 }
 .map {
-	height: 600px;
-	max-height: 70vh;
+	height: 480px;
 }
 .description {
 	margin: 10px auto;
@@ -196,13 +201,22 @@ h2 {
 	color: #666;
 	line-height: 1.25;
 }
-@media (max-width:680px) {
-	.map {
-		margin: 0 -30px;
-	}
+a,
+a:visited,
+a:focus,
+a:active {
+	color: black;
+}
+
+/* Tiempos Headline */
+
+@font-face {
+  font-family: 'Tiempos Headline';
+  src: url('https://assets.acdn.no/pkg/@amedia/brick-fonts/1.2.1/fonts/charlie/tiempos-headline-bold.woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 </style>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
