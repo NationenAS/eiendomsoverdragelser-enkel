@@ -62,105 +62,106 @@ $: date = new Date(activeSale.sale.date)
 </div>
 
 <style>
+.sale-modal {
+    font-size: 16px;
+    position: absolute;
+    width: 240px;
+    max-width: 50%;
+    max-height: 500px;
+    overflow: hidden;
+    bottom: 30px;
+    right: 30px;
+    padding: 25px 30px;
+    z-index: 10000;
+    background: white;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.35);
+    transition: .4s ease-in;
+    --vertical: 20px;
+    line-height: 1.3;
+}
+.sale-modal.closed {
+    overflow-y: hidden;
+    max-height: 25px;
+    transition: none;
+}
+h3 {
+    margin: 0;
+    font-size: 1.17em;
+}
+.nat-hide {
+    transition: .2s .4s;
+}
+.nat-hide.nat-hidden {
+    opacity: 0;
+    transition: none;
+}
+.multiple {
+    font-size: 0.85em;
+    margin-top: 5px;
+    line-height: 1.2;
+}
+span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+span:hover {
+    text-decoration: none;
+}
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+li {
+    line-height: 1.25;
+}
+.pref {
+    margin-top: var(--vertical);
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    row-gap: calc(var(--vertical) / 2);
+    align-items: center;
+    font-size: .95em;
+}
+.modal-nav {
+    float: right;
+    cursor: pointer;
+    height: 10px;
+}
+svg {
+    width: 20px;
+    margin-left: 10px;
+}
+svg:nth-child(2) {
+    margin-left: 10px;
+}
+polyline {
+    stroke: #666;
+    stroke-width: 1.25px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+svg:hover polyline {
+    stroke: black;
+    stroke-width: 1.5px;
+}
+.footer {
+    margin-top:var(--vertical);
+    opacity: 0.8;
+    font-size: 0.9em;
+    line-height: 1.15;
+}
+@media (max-width: 629px) {
     .sale-modal {
-        font-size: 16px;
-        font-family: adelle_sansregular;
-        position: absolute;
-        width: 300px;
-        max-height: 500px;
-        bottom: 30px;
-        right: 30px;
-        padding: 25px 30px;
-        z-index: 10000;
-        background: white;
-        color: black;
-        border-radius: 5px;
-        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.35);
-        transition: .4s ease-in;
-        --vertical: 20px;
-        line-height: 1.3;
+        left: 10px;
+        bottom: 10px;
+        right: 10px;
+        max-width: unset;
+        width: unset;
+        --vertical: 10px;
     }
-    .sale-modal.closed {
-        overflow-y: hidden;
-        max-height: 70px;
-        transition: none;
-    }
-    h3 {
-        margin: 0;
-        font-size: 1.17em;
-    }
-    .nat-hide {
-        transition: .2s .4s;
-    }
-    .nat-hide.nat-hidden {
-        opacity: 0;
-        transition: none;
-    }
-    .multiple {
-        font-size: 0.9em;
-        margin-top: 5px;
-        line-height: 1.15;
-    }
-    span {
-        text-decoration: underline;
-        cursor: pointer;
-    }
-    span:hover {
-        text-decoration: none;
-    }
-    ul {
-        padding-left: 0;
-        list-style: none;
-    }
-    li {
-        font-family: adelle_sansregular;
-        line-height: 1.25;
-    }
-    .pref {
-        margin-top: var(--vertical);
-        display: grid;
-        grid-template-columns: 50px 1fr;
-        row-gap: calc(var(--vertical) / 2);
-        align-items: center;
-    }
-    .modal-nav {
-        float: right;
-        cursor: pointer;
-        height: 10px;
-    }
-    svg {
-        width: 20px;
-        margin-left: 10px;
-    }
-    svg:nth-child(2) {
-        margin-left: 10px;
-    }
-    polyline {
-        stroke: #666;
-        stroke-width: 1.25px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        fill: none;
-    }
-    svg:hover polyline {
-        stroke: black;
-        stroke-width: 1.5px;
-    }
-    .footer {
-        margin-top:var(--vertical);
-        opacity: 0.8;
-        font-size: 0.9em;
-        line-height: 1.15;
-    }
-    @media (max-width: 680px) {
-        .sale-modal {
-            left: 10px;
-            bottom: 10px;
-            right: 10px;
-            max-width: unset;
-            width: unset;
-            --vertical: 10px;
-        }
-    }
+}
 
 </style>
