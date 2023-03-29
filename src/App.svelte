@@ -65,17 +65,22 @@ function zoomToBounds() {
 // Get data
 onMount(async () => {
 	if (data != null) {
-		sales = data
-		populateMap(zoomToBounds)
+		fetch(`https://nationenmedia.s3.eu-north-1.amazonaws.com/statisk/eiendommer/${data}.json`)
+		.then(r => r.json())
+		.then(d => {
+			sales = d
+			populateMap(zoomToBounds)
+		})
+		.catch(e => { console.log(e) })
 	}
 	else {
 		fetch("https://api.nationen.no/kart/sales.json")
-		.then(response => response.json())
+		.then(r => r.json())
 		.then(d => {
 			sales = d
 			populateMap()
 		})
-		.catch(error => { console.log(error) })
+		.catch(e => { console.log(e) })
 	}
 })
 

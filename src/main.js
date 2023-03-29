@@ -4,8 +4,8 @@ import App from './App.svelte'
 const urlParams = new URLSearchParams(window.location.search)
 let targetElement = document.querySelector('#Eiendomsoverdragelser-enkel')
 let initialSale = urlParams.get('id') || null
-let data = urlParams.get('data') ? JSON.parse(urlParams.get('data')) : null
-let title = urlParams.get('title') ? urlParams.get('title') : null
+let data = urlParams.get('data') || null
+let title = urlParams.get('title') || null
 
 const app = new App({
 	target: targetElement,
