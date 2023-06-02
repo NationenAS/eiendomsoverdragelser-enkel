@@ -158,7 +158,6 @@ function setLock(state) {
 {#if title != null}
 <div>
 	<h2>{title}</h2>
-	<p>Se også <a href="https://www.nationen.no/kjop-og-salg-av-landbrukseiendom/s/5-148-8974">alle kjøp og salg</a> av landbrukseiendom siste 60 dager.</p>
 </div>
 {/if}
 
@@ -171,7 +170,7 @@ function setLock(state) {
 </div>
 
 <div class="description">
-	Vi tar forbehold om at beregnet eiendomsareal kan avvike noe fra faktisk areal. Informasjon/kartdata om eiendommene leveres av Kartverket.
+	Beregnet eiendomsareal kan avvike noe fra faktisk areal. Informasjon/kartdata om eiendommene leveres av Kartverket.
 </div>
 
 </main>
@@ -190,9 +189,9 @@ main {
 	line-height: 1.35;
 }
 h2 {
-    font-family: "Tiempos Headline";
-	font-weight: 700;
+    font-family: "Open Sans";
     font-size: 22px;
+    margin-bottom: 15px;
 }
 .map-container {
 	position: relative;
@@ -205,22 +204,6 @@ h2 {
 	font-size: 0.8em;
 	color: #666;
 	line-height: 1.25;
-}
-a,
-a:visited,
-a:focus,
-a:active {
-	color: black;
-}
-
-/* Tiempos Headline */
-
-@font-face {
-  font-family: 'Tiempos Headline';
-  src: url('https://assets.acdn.no/pkg/@amedia/brick-fonts/1.2.1/fonts/charlie/tiempos-headline-bold.woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
 }
 </style>
 
