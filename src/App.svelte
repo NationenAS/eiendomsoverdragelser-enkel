@@ -94,7 +94,7 @@ function markerClick(saleId) {
 	// Reset
 	if (activeSalePolygons.getLayers() != null) activeSalePolygons.clearLayers().remove()
 	// @ts-ignore
-	activeSale.area = 0
+	activeSale = {}
 	// Register properties which share area/teig to prevent area duplicates
 	let matNumbTexts = []
 	// Make layer group and add to map
@@ -112,11 +112,8 @@ function markerClick(saleId) {
 				if(data.features.length > 0 && !matNumbTexts.includes(data.features[0].properties.matrikkelnummertekst)) {
                     // Takes all features of all matrikkelnumbers, union area, and update area calculation
                     data.features.forEach(e => {
-                        // @ts-ignore
                         if (!activeSale.features) activeSale.features = e
-                        // @ts-ignore
-                        activeSale.features = turf.union(activeSale.features, e)
-                        // @ts-ignore
+                        else activeSale.features = turf.union(activeSale.features, e)
                         activeSale.area = turf.area(activeSale.features)
                     })
 					L.geoJSON(data, { style: { color: "red", fillOpacity: 0.4, weight: 0, } })
@@ -142,7 +139,6 @@ function closeModal() {
 }
 function locateUser() {
 	showModal = false
-	activeSale = {}
 	map.locate({setView: true, maxZoom: 9});
 }
 function setLock(state) {
