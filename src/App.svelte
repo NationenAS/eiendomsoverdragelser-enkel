@@ -1,8 +1,11 @@
 <script>
 
 import { onMount } from "svelte"
+// @ts-ignore
 import { each } from "svelte/internal"
+// @ts-ignore
 import * as L from "leaflet"
+// @ts-ignore
 import { MarkerClusterGroup } from 'leaflet.markercluster';
 import * as turf from "@turf/turf"
 import Modal from "./Modal.svelte"
@@ -19,6 +22,7 @@ let map,
 	salesMarkerGroup = new MarkerClusterGroup({ showCoverageOnHover: false, zoomToBoundsOnClick: true }),
 	showModal = false,
 	locked = false,
+	// @ts-ignore
 	isMobile = L.Browser.mobile,
 	saleIcon = L.divIcon({ className: 'map-marker', html: '<svg><use xlink:href="#saleIcon"></svg>' })
 $:	activeSale = {}
@@ -58,9 +62,7 @@ function populateMap(callback) {
 	if (typeof callback == "function") callback()
 }
 function resizeMap() { if (map) { map.invalidateSize() } }
-function zoomToBounds() {
-	map.fitBounds(salesMarkerGroup.getBounds())
-}
+function zoomToBounds() { map.fitBounds(salesMarkerGroup.getBounds()) }
 
 // Get data
 onMount(async () => {
@@ -108,15 +110,22 @@ function markerClick(saleId) {
 			.then(data => {
 				// Create marker if has geo and is not duplicate
 				if(data.features.length > 0 && !matNumbTexts.includes(data.features[0].properties.matrikkelnummertekst)) {
+                    // Takes all features of all matrikkelnumbers, union area, and update area calculation
+                    data.features.forEach(e => {
+                        // @ts-ignore
+                        if (!activeSale.features) activeSale.features = e
+                        // @ts-ignore
+                        activeSale.features = turf.union(activeSale.features, e)
+                        // @ts-ignore
+                        activeSale.area = turf.area(activeSale.features)
+                    })
 					L.geoJSON(data, { style: { color: "red", fillOpacity: 0.4, weight: 0, } })
 						.bindPopup(() => {
-							let txt = p.matNumb + "<br>" + Math.round(turf.area(data) / 1000) + " dekar"
+							let txt = p.matNumb + "<br>" + Math.round(turf.area(data) / 1000) + " dekar" // Area of feature or feature collection (all features in matrikkelnumber)
 							if (p.address) txt = p.address + "<br>" + txt
 							return txt
 						})
 						.addTo(activeSalePolygons)
-					// @ts-ignore
-					activeSale.area += turf.area(data)
 					matNumbTexts.push(data.features[0].properties.matrikkelnummertekst)
 				}
 			})
